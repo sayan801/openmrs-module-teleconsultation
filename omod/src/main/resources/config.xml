@@ -2,13 +2,11 @@
 
 <module configVersion="1.4">
 
-	<id>${project.parent.artifactId}</id>
-	<name>${project.parent.name}</name>
-	<version>${project.parent.version}</version>
-	<description>
-		${project.parent.description}
-	</description>
-	<package>${MODULE_PACKAGE}</package>
+	<id>teleconsultation</id>
+	<name>Teleconsultation</name>
+	<version>1.0.0-SNAPSHOT</version>
+	<description>no description</description>
+	<package>org.bahmni.module.teleconsultation</package>
 
 	<activator>org.bahmni.module.teleconsultation.TeleconsultationActivator</activator>
 
