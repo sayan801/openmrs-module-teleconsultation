@@ -122,6 +122,7 @@
         <mockitoVersion>3.5.11</mockitoVersion>
         <junitVersion>4.13</junitVersion>
         <webServices.version>2.33.0</webServices.version>
+        <jacocoVersion>0.7.9</jacocoVersion>
     </properties>
 
     <dependencyManagement>
