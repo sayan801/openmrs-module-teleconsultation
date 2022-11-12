@@ -80,8 +80,12 @@
 				<version>${jacocoVersion}</version>
 				<configuration>
 					<includes>
-						<include>org/openmrs/module/appointments/web/**</include>
+						<include>**/*</include>
+						<include>**/*</include>
 					</includes>
+					<excludes>
+						<exclude>**/TeleconsultationActivator.class</exclude>
+					</excludes>
 				</configuration>
 				<executions>
 					<execution>
@@ -91,7 +95,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>

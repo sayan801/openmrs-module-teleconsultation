@@ -125,7 +125,7 @@
                 <version>${jacocoVersion}</version>
                 <configuration>
                     <includes>
-                        <include>org/openmrs/module/appointments/web/**</include>
+                        <include>org/bahmni/module/teleconsultation/web/**</include>
                     </includes>
                 </configuration>
                 <executions>
@@ -172,5 +172,5 @@
             </plugin>
         </plugins>
     </build>
-    
+
 </project>
