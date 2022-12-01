@@ -6,6 +6,6 @@ import org.openmrs.api.OpenmrsService;
 
 public interface TeleconsultationService extends OpenmrsService {
 
-	@Authorized
-	public String generateTeleconsultationLink(String uuid);
+	@Authorized({"Create Teleconsultation"})
+	String generateTeleconsultationLink(String uuid);
 }

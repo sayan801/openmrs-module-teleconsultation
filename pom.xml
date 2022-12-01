@@ -158,7 +158,13 @@
                 <version>${webServices.version}</version>
                 <scope>provided</scope>
             </dependency>
-
+            <dependency>
+                <groupId>org.openmrs.web</groupId>
+                <artifactId>openmrs-web</artifactId>
+                <version>${openmrsPlatformVersion}</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
             <dependency>
                 <groupId>org.openmrs.web</groupId>
                 <artifactId>openmrs-web</artifactId>

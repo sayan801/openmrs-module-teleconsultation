@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <person person_id="678" gender="" birthdate="1975-06-30" birthdate_estimated="false" dead="false" creator="1" date_created="2005-01-01 00:00:00.0" changed_by="1" date_changed="2007-09-20 21:54:12.0" voided="false" void_reason="" uuid="6adb7c42-cfd2-4301-b53b-ff17c5654dd7"/>
+
+    <users user_id="120" person_id="678" system_id="1-8" username="userWithPrivilege" password="62a9238a82b866a3e9e9ce8245ac230bf98bce2d" salt="c788c6ad82a157b712392ca695dfcf2eed193d7f" secret_question="" creator="1" date_created="2005-01-01 00:00:00.0" changed_by="1" date_changed="2007-09-20 21:54:12.0" retired="false" retire_reason="" uuid="1010d442-e134-11de-babe-001e378ev670"/>
+
+    <privilege privilege="Create Teleconsultation" description="Able to create Teleconsultation Link in Teleconsultation module" uuid="5580ceed-c290-66c8-8d3a-96dc33d199fb"/>
+
+    <role role="Create Teleconsultation Role" description="To Create Teleconsultation Link" uuid="9480cddd-c291-46c8-8d3a-96dc33d109fb"/>
+
+    <role_privilege role="Create Teleconsultation Role" privilege="Create Teleconsultation"/>
+
+    <user_role user_id="120" role="Create Teleconsultation Role"/>
+</dataset>
+
+
+

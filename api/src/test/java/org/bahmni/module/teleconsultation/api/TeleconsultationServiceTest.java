@@ -1,5 +1,6 @@
 package org.bahmni.module.teleconsultation.api;
 
+import org.bahmni.module.teleconsultation.api.impl.TeleconsultationServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,7 +9,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.openmrs.api.AdministrationService;
 import org.openmrs.api.context.Context;
-import org.bahmni.module.teleconsultation.api.impl.TeleconsultationServiceImpl;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
