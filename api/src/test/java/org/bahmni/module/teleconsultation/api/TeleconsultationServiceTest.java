@@ -1,48 +1,46 @@
 package org.bahmni.module.teleconsultation.api;
 
-import org.bahmni.module.teleconsultation.api.impl.TeleconsultationServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.openmrs.api.AdministrationService;
+import org.openmrs.api.APIAuthenticationException;
 import org.openmrs.api.context.Context;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PowerMockIgnore;
+import org.openmrs.web.test.BaseModuleWebContextSensitiveTest;
 import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
-import static org.powermock.api.mockito.PowerMockito.when;
 
-@PowerMockIgnore("javax.management.*")
-@RunWith(PowerMockRunner.class)
-@PrepareForTest({ Context.class })
-public class TeleconsultationServiceTest {
-	
-	@Mock
-	private AdministrationService administrationService;
-	
-	@InjectMocks
-	TeleconsultationServiceImpl teleconsultationService;
-	
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@org.springframework.test.context.ContextConfiguration(locations = {
+		"classpath:TestingApplicationContext.xml" }, inheritLocations = true)
+@PrepareForTest({Context.class})
+public class TeleconsultationServiceTest extends BaseModuleWebContextSensitiveTest {
+
+	@Autowired
+	TeleconsultationService teleconsultationService;
+
 	@Before
 	public void init() {
-		MockitoAnnotations.initMocks(this);
-		PowerMockito.mockStatic(Context.class);
-		when(administrationService.getGlobalProperty("bahmni.appointment.teleConsultation.serverUrlPattern")).thenReturn(
-		    "https://test.server/{0}");
-		when(Context.getAdministrationService()).thenReturn(administrationService);
+		executeDataSet("userRolesAndPrivileges.xml");
 	}
-	
+
 	@Test
-	public void shouldGenerateTCLinkForAppointment() {
+	public void shouldPassCreateTeleconsultationLinkIfTheUserHasCreateTeleconsultationPrivilegesAndGenerateLink() {
+		Context.authenticate("userWithPrivilege", "P@ssw0rd");
 		UUID uuid = UUID.randomUUID();
 		String link = teleconsultationService.generateTeleconsultationLink(uuid.toString());
-		assertEquals("https://test.server/" + uuid, link);
+		assertEquals("https://meet.jit.si/" + uuid, link);
+	}
+
+	@Test(expected = APIAuthenticationException.class)
+	public void shouldThrowAuthenticationExceptionIfUserDoesNotHaveSufficientPrivileges() {
+		Context.authenticate("userWithoutPrivilege", "P@ssw0rd");
+		TeleconsultationService service = Context.getService(TeleconsultationService.class);
+		service.generateTeleconsultationLink("uuid");
 	}
 }
