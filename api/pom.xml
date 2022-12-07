@@ -99,12 +99,8 @@
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>${jacocoVersion}</version>
 				<configuration>
-					<includes>
-						<include>**/*</include>
-						<include>**/*</include>
-					</includes>
 					<excludes>
-						<exclude>**/TeleconsultationActivator.class</exclude>
+						<exclude>**/*Activator.class</exclude>
 					</excludes>
 				</configuration>
 				<executions>
@@ -113,13 +109,6 @@
 							<goal>prepare-agent</goal>
 						</goals>
 					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>${jacocoVersion}</version>
-				<executions>
 					<execution>
 						<id>check</id>
 						<goals>
@@ -140,7 +129,7 @@
 										<limit>
 											<counter>BRANCH</counter>
 											<value>COVEREDRATIO</value>
-											<minimum>0.50</minimum>
+											<minimum>0.80</minimum>
 										</limit>
 									</limits>
 								</rule>
