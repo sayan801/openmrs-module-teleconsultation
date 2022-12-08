@@ -15,15 +15,31 @@
                 <value>org.openmrs</value>
             </list>
         </property>
+        <property name="configLocations">
+            <list>
+                <value>classpath:hibernate.cfg.xml</value>
+            </list>
+        </property>
         <property name="mappingJarLocations">
             <ref bean="mappingJarResources"/>
         </property>
         <!--  default properties must be set in the hibernate.default.properties -->
     </bean>
 
-    <bean id="teleconsultationService"
-          name="teleconsultationService"
-          class="org.bahmni.module.teleconsultation.api.impl.TeleconsultationServiceImpl"/>
+    <bean id="teleconsultationService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="target">
+            <bean class="org.bahmni.module.teleconsultation.api.impl.TeleconsultationServiceImpl"/>
+        </property>
+        <property name="preInterceptors">
+            <ref bean="serviceInterceptors"/>
+        </property>
+        <property name="transactionAttributeSource">
+            <ref bean="transactionAttributeSource"/>
+        </property>
+    </bean>
 
 
 </beans>

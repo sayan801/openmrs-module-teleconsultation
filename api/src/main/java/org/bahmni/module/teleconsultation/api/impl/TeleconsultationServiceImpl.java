@@ -11,7 +11,8 @@ public class TeleconsultationServiceImpl extends BaseOpenmrsService implements T
 	private final static String PROP_TC_SERVER = "bahmni.appointment.teleConsultation.serverUrlPattern";
 	
 	private final static String DEFAULT_TC_SERVER_URL_PATTERN = "https://meet.jit.si/{0}";
-	
+
+	@Override
 	public String generateTeleconsultationLink(String uuid) {
 		String tcServerUrl = Context.getAdministrationService().getGlobalProperty(PROP_TC_SERVER);
 		if ((tcServerUrl == null) || "".equals(tcServerUrl)) {
