@@ -2,14 +2,14 @@
 
 <module configVersion="1.4">
 
-	<id>teleconsultation</id>
-	<name>Teleconsultation</name>
-	<version>1.0.0-SNAPSHOT</version>
-	<description>no description</description>
-	<package>org.bahmni.module.teleconsultation</package>
+	<id>${project.parent.artifactId}</id>
+	<name>${project.parent.name}</name>
+	<version>${project.parent.version}</version>
+	<description>${project.parent.description}</description>
+	<package>org.bahmni.module.${project.parent.artifactId}</package>
 	<author>Bahmni</author>
 
-	<activator>org.bahmni.module.teleconsultation.TeleconsultationActivator</activator>
+	<activator>org.bahmni.module.${project.parent.artifactId}.TeleconsultationActivator</activator>
 
 	<require_version>1.11.6</require_version>
 
